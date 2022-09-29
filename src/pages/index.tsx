@@ -38,7 +38,7 @@ const Home: NextPage = () => {
     return (
         <>
             <Head>
-                <title>Create T3 App</title>
+                <title>T3 demo</title>
                 <meta name="description" content="Team demo"/>
                 <link rel="icon" href="/favicon.ico"/>
             </Head>
@@ -63,21 +63,25 @@ const Home: NextPage = () => {
                     </button>
                 </div>
                 {/* List of messages, props are text and createdAt */}
-                <div className="mt-20 space-y-8 divide-y divide-gray-200">
+                <div className="mt-6 flow-root">
+                    <ul role="list" className="-my-5 divide-y divide-gray-200">
                     {messages?.map((message) => (
-                        <div key={message.id}>
+                        <li key={message.id} className="py-5">
                             <div className="flex items-center space-x-5">
-                                <div className="flex-shrink-0">
-                                    <p className="text-sm font-medium text-gray-900">{message.text}</p>
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                    <p className="text-sm text-gray-500">{message.createdAt.toUTCString()}</p>
+                                <div className="relative focus-within:ring-2 focus-within:ring-indigo-500">
+                                    <h3 className="text-sm font-semibold text-gray-800">
+                                        <a href="#" className="hover:underline focus:outline-none">
+                                            <span className="absolute inset-0" aria-hidden="true"></span>
+                                            {message.createdAt.toUTCString()}
+                                        </a>
+                                    </h3>
+                                    <p className="mt-1 text-sm text-gray-600 line-clamp-2">{message.text}</p>
                                 </div>
                             </div>
-                        </div>
+                        </li>
                     ))}
+                    </ul>
                 </div>
-
             </main>
         </>
 );
